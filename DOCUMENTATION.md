@@ -60,63 +60,6 @@ sevengen-internshipweek1.3/
 
 ## 3. I-P-O Model (Input-Process-Output)
 
-### INPUT 📥
-**What goes into the system:**
-
-1. **Multiple CSV Files** (via Streamlit file uploader)
-   - Format: CSV files with UTF-16 encoding
-   - Delimiter: Tab-separated values (`\t`)
-   - Naming Convention: Files must start with a 2-letter country code (e.g., `PH_data.csv`, `US_sales.csv`)
-   - Content: Tabular data with headers
-
-2. **File Metadata**
-   - Filename (used to extract country code)
-   - File encoding information (UTF-16)
-
-### PROCESS 🔄
-**How the system transforms the data:**
-
-```
-1. File Upload Reception
-   └─► Accept multiple CSV files from user
-
-2. File Validation
-   └─► Check if files have .csv extension
-   └─► Continue only for valid CSV files
-
-3. Extract Country Code
-   └─► Read first 2 characters of filename
-   └─► Convert to uppercase (standardization)
-
-4. Read & Parse CSV
-   └─► Read file with UTF-16 encoding
-   └─► Use tab (\t) as separator
-   └─► Load into pandas DataFrame
-
-5. Group by Country
-   └─► Organize DataFrames in dictionary by country code
-   └─► Example: {PH: [df1, df2], US: [df3]}
-
-6. Merge Datasets
-   └─► Concatenate all DataFrames for each country
-   └─► Preserve all columns (ignore_index=True)
-   └─► Don't sort columns (sort=False)
-
-7. Export to CSV
-   └─► Save merged data to temp directory
-   └─► Filename format: {COUNTRY_CODE}_merged.csv
-   └─► Encoding: UTF-8
-
-8. Compress Results
-   └─► Bundle all merged CSV files into ZIP archive
-   └─► Filename: merged_csv_files.zip
-
-9. Prepare Download
-   └─► Buffer ZIP file in memory
-   └─► Make available for user download
-```
-
-**Core Logic Flow Diagram:**
 ```
 User Uploads Files
         ↓
@@ -133,5 +76,5 @@ Create ZIP Archive
 Download Ready
 ```
 
-### Workflow Diagram
+### 4. Workflow Diagram
 ![Workflow Diagram with CSV/Excel file(s) merge](images/Workflow.png "Workflow Diagram")
