@@ -132,3 +132,6 @@ Create ZIP Archive
         ↓
 Download Ready
 ```
+
+### Workflow Diagram
+![Workflow Diagram with CSV/Excel file(s) merge](images/Workflow.png "Workflow Diagram")
